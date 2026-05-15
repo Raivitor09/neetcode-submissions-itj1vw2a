@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int l = 0, r = nums.size() - 1;
+
+        while(l < r) {
+            int m = ((int) l + r) / 2;
+            if(nums.size() == 3) {
+                if(nums[m] > nums[m+1] || nums[m] > nums[m-1]) {
+                    return m;
+                } else {
+                    l = m + 1;
+                }
+            }
+
+            if(nums[m] > nums[m+1]) {
+                return m;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return 0;
+    }
+};
